@@ -1,3 +1,8 @@
 body{
     background-color:darkgreen;
 }
+.jumbotron{
+    text-align:center;
+    background-color:greenyellow;
+    color:darkgreen;
+}
