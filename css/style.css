@@ -10,3 +10,13 @@ body{
     text-align:center;
     color:greenyellow;
 }
+.btn-default{
+    background-color:greenyellow;
+    color:darkgreen;
+    border-color:greenyellow;
+}
+.btn-default:hover{
+    background-color:green;
+    border-color:green;
+    color:greenyellow;
+}
