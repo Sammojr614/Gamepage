@@ -34,5 +34,22 @@ ctx.fill();
 ctx.stroke();
 //left arm
 ctx.beginPath();
+ctx.fillStyle ="black";
 ctx.fillRect(85,121,5,10);
 ctx.stroke();
+//right arm
+ctx.beginPath();
+ctx.fillStyle = "black";
+ctx.fillRect(100,122,5,10);
+ctx.stroke();
+//right leg
+ctx.beginPath();
+ctx.fillStyle ="black";
+ctx.fillRect(95,138,3,10);
+ctx.stroke();
+//left Leg
+ctx.beginPath();
+ctx.fillStyle ="black";
+ctx.fillRect(90,138,3,10);
+ctx.stroke();
+
