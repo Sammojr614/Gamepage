@@ -1,4 +1,6 @@
 var canvas = document.getElementById("myCanvas");
-var ctx = canvas.getContext("2d"); 
-ctx.fillStyle = "#34FFAB"; 
-ctx.fillRect(0,0,200,50);
+var context = canvas.getContext("2d")
+
+context.beginPath();
+context.lineWidth = "6";
+context.strokeStyle = "red";
