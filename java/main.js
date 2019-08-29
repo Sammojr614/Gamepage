@@ -1,8 +1,4 @@
-var centerX = getWidth()/2;
-var centerY = getHeight()/2;
-function start(){
-    var rec = new Rectangle(100,100);
-    rec.setPosition(0,0);
-    add(rec);
-}
-
+var canvas = document.getElementById("myCanvas");
+var ctx = canvas.getContext("2d"); 
+ctx.fillStyle = "#34FFAB"; 
+ctx.fillRect(0,0,200,50);
