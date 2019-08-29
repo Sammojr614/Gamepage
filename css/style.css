@@ -20,3 +20,7 @@ body{
     border-color:green;
     color:greenyellow;
 }
+canvas{
+    border-style:solid;
+    border-color:greenyellow
+}
