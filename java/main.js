@@ -28,3 +28,9 @@ ctx.fillStyle ="#00FF34";
 ctx.fillRect(0,75,50,25);
 ctx.strokeStyle ="yelllow"
 ctx.stroke();
+
+//Circle Attept
+ctx.beginPath();
+ctx.fillPath ="#00FF34";
+ctx.arc(95, 95, 45, 0, 2 * Math.PI);
+ctx.stroke();
