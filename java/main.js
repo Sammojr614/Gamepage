@@ -1,13 +1,15 @@
 var canvas = document.getElementById("myCanvas");
 var ctx = canvas.getContext("2d");
-var
-
 
 start();
 
 function start(){
+    whatIsYourname();
+}
 
-} 
-function drawCircle(radius, x, y){
-    ctx.arc(x, y, radius, 0, 2 * Math.PI);
+function whatIsYourname(){
+    var name = prompt("What is Your name?");
+    ctx.font = "30px Arial";
+    ctx.fillText(name, 10, 50);
+    
 }
