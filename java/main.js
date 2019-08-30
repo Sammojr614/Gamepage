@@ -16,8 +16,11 @@ function start(){
 function whatIsYourname(){
     var name = prompt("What is Your name?");
     var sizeAndFont = prompt("What Size and Font?");
-    ctx.font = "30px Arial";
-    ctx.fillText(name, 10, 50);
+    var color = prompt("What Color?");
+    ctx.font = sizeAndFont;
+    ctx.textAlign ="center";
+    ctx.fillStyle = color;
+    ctx.fillText(name, 200, 200);
 }
 function drawRect(){
     var height = prompt("What is the height?");
