@@ -28,3 +28,6 @@ canvas{
     color:greenyellow;
     font-size:25px;
 }
+#homepageCanvas{
+    border-style:none;
+}

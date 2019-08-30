@@ -11,6 +11,6 @@ askForLogin();
 function askForLogin(){
     var username = prompt("Username: ");
     var password = prompt("Password: ");
-    if(username == "Sammojr614" && password == "mario1");
+    if(username == "Sammojr614" && password == "DevPassCode");
         alert("Welcome back!");
     }
