@@ -30,5 +30,4 @@ function drawRect(){
     ctx.fillStyle = color;
     ctx.fillRect(200, 200, width,height);
     ctx.stroke();
-
 }
