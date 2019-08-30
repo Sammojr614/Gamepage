@@ -24,3 +24,7 @@ canvas{
     border-style:solid;
     border-color:greenyellow;
 }
+#canvas_context{
+    color:greenyellow;
+    font-size:25px;
+}
