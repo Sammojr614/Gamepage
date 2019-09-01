@@ -11,6 +11,8 @@ function start(){
 function askForLogin(){
  var user_name = prompt("Username: ");
  var password = prompt("Password: ");
+ document.cookie = username;
+ document.cookie = password;
  if(user_name == "Sammojr614" && password == "DevPassWord"){
      alert("Welcome back, Sam!");
  }
