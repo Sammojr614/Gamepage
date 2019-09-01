@@ -1,26 +1,15 @@
-var canvas = document.getElementById("homepageCanvas");
-var ctx = canvas.getContext("2d");
+var button = document.getElementById("loginButton");
+button.onclick = askForLogin;
 var user;
 
-start();
 
-function start(){
-    askForLogin();
-}
 
 function askForLogin(){
- var user_name = prompt("Username: ");
- var password = prompt("Password: ");
- if(user_name == "Sammojr614" && password == "DevPassWord"){
-    alert("Welcome back, Sam!");
-}
-if(user_name == "Sammojr614" && password != "DevPassword"){
-    alert("Incorrect Password.");
-}
-
-if(user_name == "Holt" && password == "JamieRules"){
-    alert("Welcome Back, Jamison");
-}
- document.cookie = username;
- document.cookie = password;
+var user_name = prompt("Username: ");
+document.cookie =user_name;
+var password = prompt("Password: ");
+document.cookie = password;
+if(user_name == "Sammojr614" && password == "DevPassword"){
+    alert("Welcome Back, Sam!");
+    }
 }
