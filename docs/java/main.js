@@ -1,8 +1,10 @@
 var canvas = document.getElementById("myCanvas");
 var button = document.getElementById("drawButton");
+var clearButton = document.getElementById("clearButton");
 var ctx = canvas.getContext("2d");
 button.onclick = function () { buttonDraw() };
-
+clearButton.onclick = function () { clear() }
+ 
 
 function buttonDraw(){
 var nameOrRect = prompt("Want Me to Draw your name? or a Rectangle?: ");
@@ -24,16 +26,19 @@ if(nameOrRect == "Rectangle" || nameOrRect == "rectangle"){
 function drawName(name, color, size, font){
  ctx.beginPath();
  ctx.font = size, font;
- ctx.fillFont(name);
+ ctx.fillText(name, 10, 10);
  ctx.stroke();
 }
 
 function drawRectangle(height, width, color){
     ctx.beginPath();
     ctx.fillStyle = color;
-    ctx.Fillrect(200,200,width, height);
+    ctx.fillRect(200,200,width, height);
     ctx.stroke();
     
+    
+}
+function clear(){
     
 }
 
