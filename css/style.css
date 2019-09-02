@@ -20,6 +20,11 @@ body{
     border-color:green;
     color:greenyellow;
 }
+.btn-default:active{
+    background-color:greenyellow;
+    border-color:greenyellow;
+    color:green;
+}
 canvas{
     border-style:solid;
     border-color:greenyellow;

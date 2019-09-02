@@ -1,8 +1,10 @@
 var canvas = document.getElementById("myCanvas");
 var button = document.getElementById("drawButton");
-var clearButton = document.getElementById("clearButton");
+var gameButton = document.getElementById("gameButton");
 var ctx = canvas.getContext("2d");
 button.onclick = function () { buttonDraw() };
+gameButton.onclick = function () { Game() }
+
  
 
 function buttonDraw(){
@@ -25,7 +27,8 @@ if(nameOrRect == "Rectangle" || nameOrRect == "rectangle"){
 function drawName(name, color, size, font){
  ctx.beginPath();
  ctx.font = size, font;
- ctx.fillText(name, 10, 10);
+ ctx.textAlign = "center";
+ ctx.fillText(name, 2000, 200);
  ctx.stroke();
 }
 
