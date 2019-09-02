@@ -3,7 +3,6 @@ var button = document.getElementById("drawButton");
 var clearButton = document.getElementById("clearButton");
 var ctx = canvas.getContext("2d");
 button.onclick = function () { buttonDraw() };
-clearButton.onclick = function () { clear() }
  
 
 function buttonDraw(){
@@ -38,7 +37,5 @@ function drawRectangle(height, width, color){
     
     
 }
-function clear(){
-    
-}
+
 
