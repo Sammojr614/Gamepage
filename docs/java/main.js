@@ -1,9 +1,10 @@
 var canvas = document.getElementById("myCanvas");
 var button = document.getElementById("drawButton");
 var gameButton = document.getElementById("gameButton");
+var clearButton = document.getElementById("clearButton");
 var ctx = canvas.getContext("2d");
 button.onclick = function () { buttonDraw() };
-gameButton.onclick = function () { Game() }
+clearButton.onclick = function () { clear() };
 
  
 
@@ -37,8 +38,9 @@ function drawRectangle(height, width, color){
     ctx.fillStyle = color;
     ctx.fillRect(200,200,width, height);
     ctx.stroke();
-    
-    
+}
+function clear(){
+    ctx.clearRect(0,0, 400, 400);
 }
 
 
