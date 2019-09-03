@@ -29,18 +29,18 @@ function drawName(name, color, size, font){
  ctx.beginPath();
  ctx.font = size, font;
  ctx.fillStyle = color;
- ctx.fillText(name, 200, 400);
+ ctx.fillText(name, 400, 200);
  ctx.stroke();
 }
 
 function drawRectangle(height, width, color){
     ctx.beginPath();
     ctx.fillStyle = color;
-    ctx.fillRect(200,200,width, height);
+    ctx.fillRect(400,200,width, height);
     ctx.stroke();
 }
 function clear(){
-    ctx.clearRect(0,0, 800, 400);
+    ctx.clearRect(0,0, 800, 800);
 }
 
 
