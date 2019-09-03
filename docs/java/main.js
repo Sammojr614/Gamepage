@@ -28,8 +28,8 @@ if(nameOrRect == "Rectangle" || nameOrRect == "rectangle"){
 function drawName(name, color, size, font){
  ctx.beginPath();
  ctx.font = size, font;
- ctx.textAlign = "center";
- ctx.fillText(name, 2000, 200);
+
+ ctx.fillText(name, 200, 200);
  ctx.stroke();
 }
 
