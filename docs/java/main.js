@@ -32,7 +32,6 @@ function drawName(name, color, size, font){
  ctx.fillText(name, 400, 200);
  ctx.stroke();
 }
-
 function drawRectangle(height, width, color){
     ctx.beginPath();
     ctx.fillStyle = color;
