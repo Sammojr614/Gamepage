@@ -9,7 +9,7 @@
             "type": "node",
             "request": "launch",
             "name": "Canvas Game",
-            "program": "Desktop/ADP 1/Gamepage/docs/java/game.js"
+            "program": "user/local/bin"
         }
     ]
 }
