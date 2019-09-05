@@ -19,7 +19,7 @@ window.onload = function(){
      color: "#00FF45",
      height : 60,
      width: 60,
-     speed: 40
+     speed: 13
     }
     pewpew = {
      x: 0,
@@ -33,8 +33,9 @@ window.onload = function(){
     function moveLeft(){
         clearObject();
         player.x -= player.speed;
-        pewpew.x == player.x;
         drawPlayer(player);
+        pewpew.x = player.x
+        pewpew.y = player.y
     }
     function clearObject(){
         ctx.clearRect(player.x,player.y,player.width, player.height);
@@ -43,16 +44,22 @@ window.onload = function(){
         clearObject();
         player.y -= player.speed;
         drawPlayer(player);
+        pewpew.x = player.x
+        pewpew.y = player.y
     }
     function moveRight(){
         clearObject();
         player.x += player.speed;
         drawPlayer(player);
+        pewpew.x = player.x
+        pewpew.y = player.y
     }
     function moveDown(){
         clearObject();
         player.y += player.speed;
         drawPlayer(player);
+        pewpew.x = player.x
+        pewpew.y = player.y
     }
     function shoot(){
         while(pewpew.x <= canvas.width){
@@ -60,9 +67,10 @@ window.onload = function(){
         pewpew.x += pewpew.speed; 
         drawLaser(pewpew);
         }
-    
     }
     document.addEventListener("keydown", function(e){
+        //Locks the Screen while using Arrow Keys
+        e.preventDefault();
         //Left Arrow Key
         if(e.which == 37){
             moveLeft();
@@ -78,6 +86,14 @@ window.onload = function(){
         //Down Arrow Key
         if(e.which == 40){
             moveDown();
+        }
+        //Space Key
+        if(e.which == 32){
+            shoot();
+        }
+        //clear Canvas
+        if(e.which == 67){
+            ctx.clearRect(0,0,600,600);
         }
     }, false)
 }
