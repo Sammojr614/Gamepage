@@ -19,10 +19,10 @@ window.onload = function(){
      color: "#00FF45",
      height : 60,
      width: 60,
-     speed: 10
+     speed: 40
     }
     pewpew = {
-     x:0,
+     x: 0,
      y: 250,
      color: "00FF45",
      height:60,
@@ -42,28 +42,25 @@ window.onload = function(){
     function moveUp(){
         clearObject();
         player.y -= player.speed;
-        pewpew.x == player.x;
         drawPlayer(player);
     }
     function moveRight(){
         clearObject();
         player.x += player.speed;
-        pewpew.x == player.x;
         drawPlayer(player);
     }
     function moveDown(){
         clearObject();
         player.y += player.speed;
-        pewpew.x == player.x;
         drawPlayer(player);
     }
     function shoot(){
-     while(pewpew.x <= canvas.width){
+        while(pewpew.x <= canvas.width){
         ctx.clearRect(pewpew.x, pewpew.y, pewpew.width, pewpew.height);
-        pewpew.x += pewpew.speed;
+        pewpew.x += pewpew.speed; 
         drawLaser(pewpew);
-     }
-     
+        }
+    
     }
     document.addEventListener("keydown", function(e){
         //Left Arrow Key
@@ -82,9 +79,8 @@ window.onload = function(){
         if(e.which == 40){
             moveDown();
         }
-        //Space Key
-        if(e.which == 32){
+       /* if(e.which == 32){
             shoot();
-        }
+        }*/
     }, false)
 }
