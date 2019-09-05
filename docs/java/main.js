@@ -79,8 +79,5 @@ window.onload = function(){
         if(e.which == 40){
             moveDown();
         }
-       /* if(e.which == 32){
-            shoot();
-        }*/
     }, false)
 }
