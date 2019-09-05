@@ -19,7 +19,7 @@ window.onload = function(){
      color: "#00FF45",
      height : 60,
      width: 60,
-     speed: 13
+     speed: 10
     }
     pewpew = {
      x: 0,
@@ -27,7 +27,7 @@ window.onload = function(){
      color: "00FF45",
      height:60,
      width:10,
-     speed:20
+     speed:12
     }
     drawPlayer(player);
     function moveLeft(){
@@ -63,7 +63,6 @@ window.onload = function(){
     }
     function shoot(){
         while(pewpew.x <= canvas.width){
-        ctx.clearRect(pewpew.x, pewpew.y, pewpew.width, pewpew.height);
         pewpew.x += pewpew.speed; 
         drawLaser(pewpew);
         }
