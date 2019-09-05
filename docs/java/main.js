@@ -7,7 +7,12 @@ window.onload = function(){
         ctx.fillRect(player.x,player.y,player.height,player.width);
         ctx.stroke();
     }
-
+    function drawLaser(pewpew){
+        ctx.beginPath();
+        ctx.fillStyle =pewpew.color;
+        ctx.fillRect(pewpew.x,pewpew.y,pewpew.height,pewpew.width);
+        ctx.stroke();
+    }
     player = {
      x : 0,
      y : 250,
@@ -16,10 +21,19 @@ window.onload = function(){
      width: 60,
      speed: 10
     }
+    pewpew = {
+     x:0,
+     y: 250,
+     color: "00FF45",
+     height:20,
+     width:50,
+     speed:50
+    }
     drawPlayer(player);
     function moveLeft(){
         clearObject();
         player.x -= 1;
+        pewpew.x == player.x;
         drawPlayer(player);
     }
     function clearObject(){
@@ -28,17 +42,28 @@ window.onload = function(){
     function moveUp(){
         clearObject();
         player.y -= player.speed;
+        pewpew.x == player.x;
         drawPlayer(player);
     }
     function moveRight(){
         clearObject();
         player.x += player.speed;
+        pewpew.x == player.x;
         drawPlayer(player);
     }
     function moveDown(){
         clearObject();
         player.y += player.speed;
+        pewpew.x == player.x;
         drawPlayer(player);
+    }
+    function shoot(){
+     while(pewpew.x <= canvas.width){
+        ctx.clearRect(pewpew.x,pewpew.y,pewpew.width,pewpew.height);
+        pewpew.x =+ pewpew.speed;
+        drawLaser(pewpew);
+     }
+     
     }
     document.addEventListener("keydown", function(e){
         //Left Arrow Key
