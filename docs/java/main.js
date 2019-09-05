@@ -1,35 +1,46 @@
 window.onload = function(){
     var canvas = document.getElementById("gameTestCanvas");
     var ctx = canvas.getContext("2d");
-    var playerX = 0;
-    var playerY = 250;
-    function player(x,y,color,height,width){
+    function drawPlayer(player){
         ctx.beginPath();
-        ctx.fillStyle =color;
-        ctx.fillRect(x,y,height,width);
+        ctx.fillStyle =player.color;
+        ctx.fillRect(player.x,player.y,player.height,player.width);
         ctx.stroke();
     }
-    var playerOne = new player(playerX,playerY, "#00FF45",150,150);
 
+    player = {
+     x : 0,
+     y : 250,
+     color: "#00FF45",
+     height : 60,
+     width: 60,
+     speed: 10
+    }
+    drawPlayer(player);
     function moveLeft(){
-        playerX -= 1;
-        playerOne;
+        clearObject();
+        player.x -= 1;
+        drawPlayer(player);
+    }
+    function clearObject(){
+        ctx.clearRect(player.x,player.y,player.width, player.height);
     }
     function moveUp(){
-        playerY -= 1;
-        playerOne;
+        clearObject();
+        player.y -= player.speed;
+        drawPlayer(player);
     }
     function moveRight(){
-        playerX += 1;
-        playerOne;
+        clearObject();
+        player.x += player.speed;
+        drawPlayer(player);
     }
     function moveDown(){
-        playerY += 1;
-        playerOne;
+        clearObject();
+        player.y += player.speed;
+        drawPlayer(player);
     }
-
     document.addEventListener("keydown", function(e){
-
         //Left Arrow Key
         if(e.which == 37){
             moveLeft();
@@ -42,10 +53,9 @@ window.onload = function(){
         if(e.which == 39){
             moveRight();
         }
-        //Down Arrow
+        //Down Arrow Key
         if(e.which == 40){
             moveDown();
         }
-
     }, false)
 }
