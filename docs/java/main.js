@@ -25,14 +25,14 @@ window.onload = function(){
      x:0,
      y: 250,
      color: "00FF45",
-     height:20,
-     width:50,
-     speed:50
+     height:60,
+     width:10,
+     speed:20
     }
     drawPlayer(player);
     function moveLeft(){
         clearObject();
-        player.x -= 1;
+        player.x -= player.speed;
         pewpew.x == player.x;
         drawPlayer(player);
     }
@@ -59,8 +59,8 @@ window.onload = function(){
     }
     function shoot(){
      while(pewpew.x <= canvas.width){
-        ctx.clearRect(pewpew.x,pewpew.y,pewpew.width,pewpew.height);
-        pewpew.x =+ pewpew.speed;
+        ctx.clearRect(pewpew.x, pewpew.y, pewpew.width, pewpew.height);
+        pewpew.x += pewpew.speed;
         drawLaser(pewpew);
      }
      
@@ -81,6 +81,10 @@ window.onload = function(){
         //Down Arrow Key
         if(e.which == 40){
             moveDown();
+        }
+        //Space Key
+        if(e.which == 32){
+            shoot();
         }
     }, false)
 }
