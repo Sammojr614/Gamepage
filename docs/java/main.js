@@ -63,6 +63,7 @@ window.onload = function(){
     }
     function shoot(){
         while(pewpew.x <= canvas.width){
+        ctx.clearRect(pewpew.x, pewpew.y, pewpew.width, pewpew.height);
         pewpew.x += pewpew.speed; 
         drawLaser(pewpew);
         }
