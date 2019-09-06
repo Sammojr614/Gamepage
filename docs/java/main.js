@@ -11,7 +11,6 @@ window.onload = function(){
         ctx.beginPath();
         ctx.fillStyle =pewpew.color;
         ctx.fillRect(pewpew.x,pewpew.y,pewpew.height,pewpew.width);
-        ctx.stroke();
     }
     player = {
      x : 0,
@@ -22,8 +21,8 @@ window.onload = function(){
      speed: 10
     }
     pewpew = {
-     x: 0,
-     y: 250,
+     x: 65,
+     y: 275,
      color: "00FF45",
      height:60,
      width:10,
@@ -34,8 +33,6 @@ window.onload = function(){
         clearObject();
         player.x -= player.speed;
         drawPlayer(player);
-        pewpew.x = player.x
-        pewpew.y = player.y
     }
     function clearObject(){
         ctx.clearRect(player.x,player.y,player.width, player.height);
@@ -43,30 +40,25 @@ window.onload = function(){
     function moveUp(){
         clearObject();
         player.y -= player.speed;
+        player.x +65 == pewpew.x
+        player.y +25 == pewpew.y
         drawPlayer(player);
-        pewpew.x = player.x
-        pewpew.y = player.y
     }
     function moveRight(){
         clearObject();
         player.x += player.speed;
         drawPlayer(player);
-        pewpew.x = player.x
-        pewpew.y = player.y
     }
     function moveDown(){
         clearObject();
         player.y += player.speed;
         drawPlayer(player);
-        pewpew.x = player.x
-        pewpew.y = player.y
     }
     function shoot(){
-        while(pewpew.x <= canvas.width){
-        ctx.clearRect(pewpew.x, pewpew.y, pewpew.width, pewpew.height);
-        pewpew.x += pewpew.speed; 
+        ctx.clearRect(pewpew.x,pewpew.y,pewpew.width,pewpew.height);
+        pewpew.x += pewpew.speed;
         drawLaser(pewpew);
-        }
+        
     }
     document.addEventListener("keydown", function(e){
         //Locks the Screen while using Arrow Keys
@@ -89,7 +81,9 @@ window.onload = function(){
         }
         //Space Key
         if(e.which == 32){
-            shoot();
+            while(pewpew.x <= canvas.width){
+                shoot();
+            }
         }
         //clear Canvas
         if(e.which == 67){
