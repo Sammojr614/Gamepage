@@ -36,18 +36,29 @@ window.onload = function(){
         clearObject();
         player.y -= player.speed;
         drawPlayer(player);
+        pewpew.y = player.y
+        if(player.y <= -1){
+            ctx.clearRect(player.x,player.y, player.width,player.height);
+            player.y = 600;
+        }
     }
     function moveDown(){
         clearObject();
         player.y += player.speed;
         drawPlayer(player);
-        pewpew.y-25 == player.y
+        pewpew.y = player.y
+        if(player.y >= 600){
+            ctx.clearRect(player.x,player.y, player.width,player.height);
+            player.y = 0;
+        }
     }
     function shoot(){
         ctx.clearRect(pewpew.x,pewpew.y,pewpew.width,pewpew.height);
         pewpew.x += pewpew.speed;
         drawLaser(pewpew);
     }
+    
+    
     document.addEventListener("keydown", function(e){
         //Locks the Screen while using Arrow Keys
         e.preventDefault();
