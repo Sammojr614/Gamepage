@@ -28,52 +28,32 @@ window.onload = function(){
      width:10,
      speed:12
     }
-    drawPlayer(player);
-    function moveLeft(){
-        clearObject();
-        player.x -= player.speed;
-        drawPlayer(player);
-    }
+    drawPlayer(player); 
     function clearObject(){
         ctx.clearRect(player.x,player.y,player.width, player.height);
     }
     function moveUp(){
         clearObject();
         player.y -= player.speed;
-        player.x +65 == pewpew.x
-        player.y +25 == pewpew.y
-        drawPlayer(player);
-    }
-    function moveRight(){
-        clearObject();
-        player.x += player.speed;
         drawPlayer(player);
     }
     function moveDown(){
         clearObject();
         player.y += player.speed;
         drawPlayer(player);
+        pewpew.y-25 == player.y
     }
     function shoot(){
         ctx.clearRect(pewpew.x,pewpew.y,pewpew.width,pewpew.height);
         pewpew.x += pewpew.speed;
         drawLaser(pewpew);
-        
     }
     document.addEventListener("keydown", function(e){
         //Locks the Screen while using Arrow Keys
         e.preventDefault();
-        //Left Arrow Key
-        if(e.which == 37){
-            moveLeft();
-        }
         //Up Arrow Key
         if(e.which == 38){
             moveUp();
-        }
-        //Right Arrow Key
-        if(e.which == 39){
-            moveRight();
         }
         //Down Arrow Key
         if(e.which == 40){
