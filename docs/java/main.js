@@ -36,9 +36,9 @@ window.onload = function(){
      speed:12
     }
     enemy = {
-        x: 600,
+        x: 500,
         y: 600,
-        color: "0000FF",
+        color: "0089FF",
         height: 350,
         width:60,
         speed:12
