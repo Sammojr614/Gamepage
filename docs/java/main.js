@@ -13,12 +13,6 @@ window.onload = function(){
         ctx.fillRect(pewpew.x,pewpew.y,pewpew.height,pewpew.width);
         ctx.stroke();
     }
-    function drawEnemy(enemy){
-        ctx.beginPath();
-        ctx.fillStyle= enemy.color;
-        ctx.fillRect(enemy.x,enemy.y,enemy.width,enemy.height);
-        ctx.stroke();
-    }
     player = {
      x : 0,
      y : 250,
@@ -35,16 +29,8 @@ window.onload = function(){
      width:10,
      speed:12
     }
-    enemy = {
-        x: 500,
-        y: 600,
-        color: "0089FF",
-        height: 350,
-        width:60,
-        speed:12
-    }
+
     drawPlayer(player); 
-    drawEnemy(enemy);
     function clearObject(){
         ctx.clearRect(player.x,player.y,player.width, player.height);
     }
