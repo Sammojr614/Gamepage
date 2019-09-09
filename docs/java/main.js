@@ -8,7 +8,7 @@ window.onload = function(){
         height:50,
         color:"#00FE45",
         speed:12,
-        direction: "right"
+        direction: "center"
     }
     pewpew ={
         x: 100,
@@ -20,16 +20,28 @@ window.onload = function(){
     }
     blocker ={
         x: 550,
-        y:550,
-        width:150,
-        height:250,
+        y: 550,
+        width:50,
+        height:50,
         color:"lightGreen",
+    }
+    beginText ={
+        x: 300,
+        y: 300,
+        fontStyle: "Arial",
+        fontSize: "30px",
+        fontColor: "lightGreen",
     }
     function drawPlayer(player){
         ctx.beginPath();
         ctx.fillStyle = player.color;
         ctx.fillRect(player.x,player.y,player.width,player.height);
         ctx.stroke();
+    }
+    function drawBeginText(beginText){
+        ctx.font = beginText.fontStyle, beginText.fontSize;
+        ctx.fillStyle = beginText.color;
+        ctx.fillText("Game Start!",beginText.x,beginText.y);
     }
     function drawBlocker(blocker){
         ctx.beginPath();
@@ -44,7 +56,7 @@ window.onload = function(){
         clearObject(player);
         player.x += player.speed;
         drawPlayer(player);
-        player.direction += "center";
+        player.direction += "right";
     }
     function moveLeft(){
         clearObject(player);
@@ -129,22 +141,26 @@ function draw(timePassed) {
     player.y += 5;
     player.x += 2;
     drawPlayer(player);
-    
-}
     }
     document.addEventListener("keydown",function(e){
+        e.preventDefault();
+
         if(e.which == 80){
             player.y = 550;
-            alert("Begin game!")
+            drawBeginText(beginText);
             drawPlayer(player);
             drawBlocker(blocker);
         }
         if(e.which == 82){
             clearObject(player);
+            clearObject(blocker);
+            clearObject(pewpew);
+            ctx.clearRect(0,0,600,600);
             alert("GameReset");
             player.y = 550;
             player.x = 0;
             drawPlayer(player);
+            drawBlocker(blocker);
             
         }
         if(e.which == 39){
@@ -161,6 +177,9 @@ function draw(timePassed) {
                 if(pewpew.x = canvas.width){
                     pewpew.x = player.x;
                     ctx.clearRect(pewpew.x,pewpew.y,pewpew.width,pewpew.height);
+                }
+                if(player.x = blocker.x  && player.y == blocker.y -100){
+                    player.y = 350;
                 }
             }
         }
