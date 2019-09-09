@@ -11,8 +11,8 @@ window.onload = function(){
         direction: "right"
     }
     pewpew ={
-        x: 45,
-        y: 475,
+        x: 90,
+        y: 550,
         width:50,
         height:15,
         color:"00CC45",
@@ -39,6 +39,31 @@ window.onload = function(){
         drawPlayer(player);
         player.direction += "left";
     }
+    function shoot(){
+        let start = Date.now(); // remember start time
+
+        let timer = setInterval(function() {
+          // how much time passed from the start?
+          let timePassed = Date.now() - start;
+        
+          if (timePassed >= 1000) {
+            clearInterval(timer); // finish the animation after 2 seconds
+            return;
+          }
+        
+          // draw the animation at the moment timePassed
+          draw(timePassed);
+        }, 20);
+        
+        // as timePassed goes from 0 to 2000
+        // left gets values from 0px to 400px
+        function draw(timePassed) {
+          clearObject(pewpew);
+          pewpew.x += pewpew.speed;
+          drawPlayer(pewpew);
+       
+        }
+    }
     function jump(){
         let start = Date.now(); // remember start time
 
@@ -63,6 +88,7 @@ window.onload = function(){
             player.y -= 10;
             player.x += 2;
           drawPlayer(player);
+         
        
         }
     }
@@ -90,6 +116,7 @@ function draw(timePassed) {
     player.y += 5;
     player.x += 2;
     drawPlayer(player);
+    
 }
     }
     document.addEventListener("keydown",function(e){
@@ -104,17 +131,44 @@ function draw(timePassed) {
             player.y = 550;
             player.x = 0;
             drawPlayer(player);
+            
         }
         if(e.which == 39){
             moveRight();
+            if(player.y < 550){
+                playery = 550
+            }
         }
         if(e.which == 32 || e.which == 38){
             jump(player);
             comeDown(player);
+            if(player.y < 550){
+                player.y = 550
+                if(pewpew.x = canvas.width){
+                    pewpew.x = player.x;
+                    ctx.clearRect(pewpew.x,pewpew.y,pewpew.width,pewpew.height);
+                }
+            }
         }
         if(e.which == 37){
             moveLeft();
+            if(pewpew.x = canvas.width){
+                pewpew.x = player.x;
+                ctx.clearRect(pewpew.x,pewpew.y,pewpew.width,pewpew.height);
+            }
+            if(player.y < 550){
+                playery = 550
+            }
         }
-
+        if(e.which == 50){
+            player.y = 550;
+        }
+        if(e.which == 83){
+            shoot();
+            if(pewpew.x = canvas.width){
+                pewpew.x = player.x;
+                ctx.clearRect(pewpew.x,pewpew.y,pewpew.width,pewpew.height);
+            }
+        }
     })
 }
