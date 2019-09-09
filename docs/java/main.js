@@ -11,17 +11,31 @@ window.onload = function(){
         direction: "right"
     }
     pewpew ={
-        x: 90,
-        y: 550,
+        x: 100,
+        y: 475,
         width:50,
         height:15,
         color:"00CC45",
         speed:12
     }
+    blocker ={
+        x: 550,
+        y:550,
+        width:100,
+        height:10,
+        color:"Green",
+        style:"border-color:#00FF45; border:1;"
+    }
     function drawPlayer(player){
         ctx.beginPath();
         ctx.fillStyle = player.color;
         ctx.fillRect(player.x,player.y,player.width,player.height);
+        ctx.stroke();
+    }
+    function drawBlocker(blocker){
+        ctx.beginPath();
+        ctx.fillStyle = blocker.color;
+        ctx.fillRect(blocker.x,blocker.y,blocker.width,blocker.height);
         ctx.stroke();
     }
     function clearObject(player){
