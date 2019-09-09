@@ -21,10 +21,9 @@ window.onload = function(){
     blocker ={
         x: 550,
         y:550,
-        width:100,
-        height:10,
-        color:"Green",
-        style:"border-color:#00FF45; border:1;"
+        width:150,
+        height:250,
+        color:"lightGreen",
     }
     function drawPlayer(player){
         ctx.beginPath();
@@ -138,6 +137,7 @@ function draw(timePassed) {
             player.y = 550;
             alert("Begin game!")
             drawPlayer(player);
+            drawBlocker(blocker);
         }
         if(e.which == 82){
             clearObject(player);
