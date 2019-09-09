@@ -1,74 +1,120 @@
 window.onload = function(){
     var canvas = document.getElementById("gameTestCanvas");
     var ctx = canvas.getContext("2d");
+    player ={
+        x: 0,
+        y: 450,
+        width:50,
+        height:50,
+        color:"#00FE45",
+        speed:12,
+        direction: "right"
+    }
+    pewpew ={
+        x: 45,
+        y: 475,
+        width:50,
+        height:15,
+        color:"00CC45",
+        speed:12
+    }
     function drawPlayer(player){
         ctx.beginPath();
-        ctx.fillStyle =player.color;
-        ctx.fillRect(player.x,player.y,player.height,player.width);
+        ctx.fillStyle = player.color;
+        ctx.fillRect(player.x,player.y,player.width,player.height);
         ctx.stroke();
     }
-    function drawLaser(pewpew){
-        ctx.beginPath();
-        ctx.fillStyle =pewpew.color;
-        ctx.fillRect(pewpew.x,pewpew.y,pewpew.height,pewpew.width);
-        ctx.stroke();
+    function clearObject(player){
+        ctx.clearRect(player.x,player.y,player.width,player.height);
     }
-    player = {
-     x : 0,
-     y : 250,
-     color: "#00FF45",
-     height : 60,
-     width: 60,
-     speed: 10
+    function moveRight(){
+        clearObject(player);
+        player.x += player.speed;
+        drawPlayer(player);
+        player.direction += "center";
     }
-    pewpew = {
-     x: 65,
-     y: 275,
-     color: "00FF45",
-     height:60,
-     width:10,
-     speed:12
+    function moveLeft(){
+        clearObject(player);
+        player.x -= player.speed;
+        drawPlayer(player);
+        player.direction += "left";
     }
+    function jump(){
+        let start = Date.now(); // remember start time
 
-    drawPlayer(player); 
-    function clearObject(){
-        ctx.clearRect(player.x,player.y,player.width, player.height);
-    }
-    function moveUp(){
-        clearObject();
-        player.y -= player.speed;
-        drawPlayer(player);
-        pewpew.y = player.y
-        if(player.y <= -1){
-            ctx.clearRect(player.x,player.y, player.width,player.height);
-            player.y = 600;
+        let timer = setInterval(function() {
+          // how much time passed from the start?
+          let timePassed = Date.now() - start;
+        
+          if (timePassed >= 500) {
+            clearInterval(timer); // finish the animation after 2 seconds
+            return;
+          }
+        
+          // draw the animation at the moment timePassed
+          draw(timePassed);
+        
+        }, 20);
+        
+        // as timePassed goes from 0 to 2000
+        // left gets values from 0px to 400px
+        function draw(timePassed) {
+          clearObject(player);
+            player.y -= 10;
+            player.x += 2;
+          drawPlayer(player);
+       
         }
     }
-    function moveDown(){
-        clearObject();
-        player.y += player.speed;
-        drawPlayer(player);
-        pewpew.y = player.y
-        if(player.y >= 600){
-            ctx.clearRect(player.x,player.y, player.width,player.height);
-            player.y = 0;
-        }
+    function comeDown(){
+        let start = Date.now(); // remember start time
+
+let timer = setInterval(function() {
+  // how much time passed from the start?
+  let timePassed = Date.now() - start;
+
+  if (timePassed >= 1000) {
+    clearInterval(timer); // finish the animation after 2 seconds
+    return;
+  }
+
+  // draw the animation at the moment timePassed
+  draw(timePassed);
+
+}, 20);
+
+// as timePassed goes from 0 to 2000
+// left gets values from 0px to 400px
+function draw(timePassed) {
+  clearObject(player)
+    player.y += 5;
+    player.x += 2;
+    drawPlayer(player);
+}
     }
-    
-    document.addEventListener("keydown", function(e){
-        //Locks the Screen while using Arrow Keys
-        e.preventDefault();
-        //Up Arrow Key
-        if(e.which == 38){
-            moveUp();
+    document.addEventListener("keydown",function(e){
+        if(e.which == 80){
+            player.y = 550;
+            alert("Begin game!")
+            drawPlayer(player);
         }
-        //Down Arrow Key
-        if(e.which == 40){
-            moveDown();
+        if(e.which == 82){
+            clearObject(player);
+            alert("GameReset");
+            player.y = 550;
+            player.x = 0;
+            drawPlayer(player);
         }
-        //clear Canvas
-        if(e.which == 67){
-            ctx.clearRect(0,0,600,600);
+        if(e.which == 39){
+            moveRight();
         }
-    }, false)
+        if(e.which == 32 || e.which == 38){
+            jump(player);
+            comeDown(player);
+        }
+        if(e.which == 37){
+            moveLeft();
+        }
+
+    })
 }
