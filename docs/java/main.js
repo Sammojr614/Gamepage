@@ -1,6 +1,15 @@
 window.onload = function(){
     var canvas = document.getElementById("gameTestCanvas");
     var ctx = canvas.getContext("2d");
+    //Laser Perameters
+    pewpew ={
+        x:0,
+        y:550,
+        height:15,
+        width:25,
+        color:"#00FF45",
+        speed:12
+    }
     //Player Object Perameters
     player ={
         x: 0,
@@ -59,29 +68,55 @@ window.onload = function(){
     beginText();
     selectMenu();
 }
-function jump(){
+    //Drawing the Laser
+    function drawLaser(pewpew){
+        ctx.beginPath();
+        ctx.fillStyle = pewpew.color;
+        ctx.fillRect(pewpew.x,pewpew.y,pewpew.height,pewpew.height);
+        ctx.stroke();
+    }
+function jump(player){
+         let start = Date.now();
+
+    let timer = setInterval(function(){
+        let timePassed = Date.now() - start;
+    
+        if(timePassed >= 1000){
+            clearInterval(timer);
+            return;
+        }
+    
+        draw(player);
+    },20)
+    
+    function draw(player){
+        clearObject(player);
+        player.y -= 9;
+        player.x += 0;
+        drawPlayer(player);
+
+    }
+}
+function shoot(pewpew){
     let start = Date.now();
     let timer = setInterval(function(){
-        let timePassed = Date.now(); - start;
+        let timePassed = Date.now() - start;
         if(timePassed >= 500){
             clearInterval(timer);
             return;
         }
-        draw(timePassed);
-
-    },20)
-    function draw(timePassed){
-        clearObject(player);
-        player.y -= 50;
-        player.x += 50;
-        drawPlayer(player);
+        draw(pewpew);
+    })
+    function draw(pewpew){
+        ctx.clearRect(pewpew.x, pewpew.y,pewpew.width,pewpew.height);
+        pewpew.x += pewpew.speed;
+        drawLaser(pewpew);
     }
 }
 drawMenu();
     document.addEventListener("keydown", function(e){
-        //Starting the Game
-        if(e.which == 13 && selector.y == 350){
-            alert("Game Start");
+        //Starting
+        if(e.which ==13 && selector.y == 350){
             ctx.clearRect(0,0,600,600);
             drawPlayer(player);
         }
@@ -115,8 +150,13 @@ drawMenu();
             drawPlayer(player);
         }
         //Space and Up Arrow
-        if(e.which == 38 || e.which == 32){
-            jump();
+        /*if(e.which == 38 || e.which == 32){
+            jump(player);
+            comeDown(player);
+        }*/
+        //Shoot
+        if(e.which == 83){
+            shoot();
         }
     }, false)
 
