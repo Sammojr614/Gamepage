@@ -146,7 +146,7 @@ window.onload = function(){
             let start = Date.now();
             let timer = setInterval(function(){
                 let timePassed = Date.now() - start;
-                if(timePassed >= 400){
+                if(timePassed >= 300){
                     comeDown(player);
                     clearInterval(timer);
                     return
@@ -165,20 +165,16 @@ window.onload = function(){
         }
         // Num key 1
         if(e.which == 49){
-            while(selector.y != 350){
-                ctx.clearRect(selector.x,selector.y,selector.width,selector.height);
-                selector.y += selector.speed;
+            ctx.clearRect(selector.x, selector.y,selector.width,selector.height);
+                selector.y = 350;
                 drawSelector(selector);
-            }
         }
         //Num key 2
         if(e.which == 50){
-            while(selector.y != 375){
-                ctx.clearRect(selector.x,selector.y,selector.width,selector.height);
-                selector.y += selector.speed;
-                drawSelector(selector);
-            }
-        }
+            ctx.clearRect(selector.x, selector.y,selector.width,selector.height);
+            selector.y = 375;
+            drawSelector(selector);
+    }
         //Start Game
         if(e.which == 13 && selector.y == 350){
             ctx.clearRect(0,0,600,600);
