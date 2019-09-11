@@ -20,8 +20,10 @@ window.onload = function(){
     selector ={
         x:275,
         y:300,
-        radius:5,
-        color:"yellow"
+        height:5,
+        width:5,
+        color:"ED00ED",
+        speed:12,
     }
     function drawTitle(){
         ctx.beginPath();
@@ -60,9 +62,9 @@ window.onload = function(){
     function drawSelector(selector){
         ctx.beginPath();
         ctx.fillStyle = selector.color;
-        ctx.fill();
-        ctx.arc(selector.x,selector.y,selector.radius,0,2*Math.PI);
+        ctx.fillRect(selector.x,selector.y,selector.width,selector.height);
         ctx.stroke();
+        
     }
     function clearObject(player){
         ctx.clearRect(player.x,player.y,player.width,player.height);
@@ -163,13 +165,19 @@ window.onload = function(){
         }
         // Num key 1
         if(e.which == 49){
-            selector.y = 350;
-            drawSelector(selector);
+            while(selector.y != 350){
+                ctx.clearRect(selector.x,selector.y,selector.width,selector.height);
+                selector.y += selector.speed;
+                drawSelector(selector);
+            }
         }
         //Num key 2
         if(e.which == 50){
-            selector.y = 375;
-            drawSelector(selector);
+            while(selector.y != 375){
+                ctx.clearRect(selector.x,selector.y,selector.width,selector.height);
+                selector.y += selector.speed;
+                drawSelector(selector);
+            }
         }
         //Start Game
         if(e.which == 13 && selector.y == 350){
